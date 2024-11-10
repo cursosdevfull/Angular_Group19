@@ -1,0 +1,8 @@
+<p>{{ title }}</p>
+
+<p [innerHTML]="title"></p>
+<p innerHTML="{{ title }}"></p>
+
+<button (click)="onPress()">Presióname</button>
+<textarea (input)="captureInput($event)"></textarea>
+<p>Username {{ username() }}</p>
