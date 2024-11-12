@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AppCDevLibComponent } from './app-cdev-lib.component';
+import { PageLoginComponent } from './page-login.component';
 
-describe('AppCDevLibComponent', () => {
-  let component: AppCDevLibComponent;
-  let fixture: ComponentFixture<AppCDevLibComponent>;
+describe('PageLoginComponent', () => {
+  let component: PageLoginComponent;
+  let fixture: ComponentFixture<PageLoginComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppCDevLibComponent]
+      imports: [PageLoginComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AppCDevLibComponent);
+    fixture = TestBed.createComponent(PageLoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
