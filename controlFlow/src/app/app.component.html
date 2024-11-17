@@ -1,0 +1,61 @@
+@if(result1 < result2) {
+<h1>Result1 is less than result2</h1>
+}
+
+<hr />
+@if(students.length > 5) {
+<h2>Total de alumnos = {{ students.length }}</h2>
+} @else {
+<h2>No hay suficientes alumnos</h2>
+}
+
+<hr />
+@if(invoices2024.length > 4) {
+<h2>Hay más de {{ invoices2024.length }} facturas para el año 2024</h2>
+} @else if(invoices2023.length > 8) {
+<h2>Hay más de {{ invoices2023.length }} facturas para el año 2023</h2>
+} @else {
+<h2>Solo hay del 2022 a menos</h2>
+}
+
+<hr />
+@if(user.address.city; as userCity) {
+<h2>{{ userCity }}</h2>
+}
+
+<hr />
+<h2>Facturas</h2>
+<ul>
+  @for(item of invoices; track item.number; let position=$index; let
+  total=$count; let posEven=$even; let posOdd=$odd) {
+  <li>
+    <h3>Factura {{ position }}/{{ total }}: {{ item.number }}</h3>
+    <p>Cantidad: {{ item.amount }}</p>
+    <p>Año: {{ item.year }}</p>
+    <p>Impar/Par = {{ posEven }} ::: {{ posOdd }}</p>
+  </li>
+
+  }
+</ul>
+
+<hr />
+<h2>Courses</h2>
+<ul>
+  @for(course of courses; track course) {
+  <li>
+    <h3>{{ course }}</h3>
+  </li>
+  } @empty {
+  <li>
+    <h3>No hay cursos</h3>
+  </li>
+  }
+</ul>
+
+@switch (userRole) { @case("admin") {
+<h2>Administrador</h2>
+} @case("user") {
+<h2>Usuario</h2>
+} @default {
+<h2>Invitado</h2>
+} }
