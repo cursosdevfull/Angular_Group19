@@ -1,39 +1,52 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { Observable, Observer, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [],
+  imports: [RouterOutlet, RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'observables';
+  subscription: Subscription;
 
   constructor() {
-    const observable = new Observable((observer) => {
+    const observable = new Observable((observer: Observer<string>) => {
       setTimeout(() => {
         observer.next('Execution started');
-        observer.next('Execution completed');
         console.log('Time elapsed: 2 segs');
       }, 2000);
 
-      setTimeout(() => {
+      /*       setTimeout(() => {
         observer.error('Error occurred');
-      }, 4000);
+      }, 4000); */
 
       setTimeout(() => {
-        observer.next('Execution started');
         observer.next('Execution completed');
-        console.log('Time elapsed: 2 segs');
+        //console.log('Time elapsed: 2 segs');
       }, 6000);
+
+      setTimeout(() => {
+        observer.complete();
+        console.log('Observation ended. Time elapsed: 2 segs');
+      }, 8000);
+
+      setTimeout(() => {
+        observer.next("This won't be printed");
+      }, 10000);
     });
 
-    observable.subscribe(
-      (message) => console.log(message),
-      (error) => console.log(error),
-      () => console.log('Completed')
-    );
+    this.subscription = observable.subscribe({
+      next: (message) => console.log(message),
+      error: (error) => console.log(error),
+      complete: () => console.log('Completed'),
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }
