@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  background-color: antiquewhite;
+}
+
+.subcontainer {
+  display: flex;
+  align-items: center;
+}
+
+.external-container {
+  background-color: cadetblue;
+}
+
+h1 {
+  line-height: 70px;
+  font-size: 40px;
+}
+
+h2 {
+  line-height: 70px;
+  font-size: 20px;
+}
