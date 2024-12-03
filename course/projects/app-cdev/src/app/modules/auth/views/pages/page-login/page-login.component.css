@@ -1,20 +1,17 @@
 .container-login {
   display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
+  justify-content: space-between;
+  background-color: #2173df;
 }
 
 .container-login__intro {
-  width: 75%;
   height: 100vh;
-  background-color: silver;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.container-login__login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(14, 132, 228);
-  height: 100vh;
+.intro__lottie {
+  height: 90%;
 }

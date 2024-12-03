@@ -1,1 +1,13 @@
-<cdev-page-login></cdev-page-login>
+<mat-sidenav-container>
+  @if(showMenu) {
+  <mat-sidenav mode="side" opened="true" position="start">
+    <cdev-menu></cdev-menu>
+  </mat-sidenav>
+  }
+  <mat-sidenav-content>
+    @if(showHeader) {
+    <cdev-header></cdev-header>
+    }
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

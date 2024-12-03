@@ -25,8 +25,8 @@
               }
             ],
             "styles": [
-              "projects/app-cdev/src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "projects/app-cdev/src/custom-theme.scss",
+              "projects/app-cdev/src/styles.css"
             ],
             "scripts": []
           },
