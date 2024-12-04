@@ -1,0 +1,22 @@
+<mat-toolbar class="toolbar">
+  <button mat-button class="toolbar__button" [matMenuTriggerFor]="menu">
+    <div class="button__userdata">
+      <div class="userdata__info">
+        <img src="/assets/images/avatar-user.png" alt="" class="info__image" />
+        <span class="info__username">Claudia Zapata</span>
+        <mat-icon>keyboard_arrow_down</mat-icon>
+      </div>
+    </div>
+  </button>
+</mat-toolbar>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>lock</mat-icon>
+    <span>Bloquear pantalla</span>
+  </button>
+  <mat-divider></mat-divider>
+  <button mat-menu-item (click)="logout()">
+    <mat-icon>logout</mat-icon>
+    <span>Cerrar sesión</span>
+  </button>
+</mat-menu>

@@ -1,0 +1,24 @@
+.toolbar {
+  background-color: whitesmoke;
+  color: white;
+  border-bottom: 1p solid #848fc7;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.toolbar__button {
+  display: flex;
+  align-items: center;
+}
+
+.userdata__info {
+  display: flex;
+  align-items: center;
+}
+
+.info__image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}

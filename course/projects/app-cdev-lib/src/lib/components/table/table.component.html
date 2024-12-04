@@ -1,0 +1,17 @@
+<ng-content></ng-content>
+
+<table mat-table [dataSource]="data()">
+  @for (item of displayedColumns; track $index) {
+  <ng-container [matColumnDef]="item">
+    <th mat-header-cell *matHeaderCellDef>
+      {{ titleColumns()[item] }}
+    </th>
+    <td mat-cell *matCellDef="let row">
+      {{ row[item] }}
+    </td>
+  </ng-container>
+  }
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

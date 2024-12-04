@@ -1,0 +1,18 @@
+<div class="logo">
+  <img src="/assets/images/logo-course.png" alt="" class="logo__company" />
+</div>
+
+<ul class="menu">
+  @for(item of menuItems; track item.route) {
+  <li class="menu__item">
+    <a
+      routerLink="{{ item.route }}"
+      class="item__link"
+      routerLinkActive="active"
+    >
+      <mat-icon class="link__icon">{{ item.icon }}</mat-icon>
+      <span class="link__title">{{ item.title }}</span></a
+    >
+  </li>
+  }
+</ul>
