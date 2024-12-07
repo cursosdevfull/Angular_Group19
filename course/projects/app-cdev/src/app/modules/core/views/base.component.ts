@@ -8,7 +8,11 @@ export abstract class BaseComponent {
   abstract icon: string;
   abstract data: any[];
   abstract metadata: TMetadata;
+  abstract length: number;
+
   private readonly layoutService = inject(LayoutService);
+  protected pageSize = 25;
+  protected currentPage = 0;
 
   constructor() {
     this.layoutService.changeConfigLayout({

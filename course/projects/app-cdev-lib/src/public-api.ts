@@ -14,3 +14,4 @@ export * from './lib/modules/layout/layout.type';
 export * from './lib/components/title/title.component';
 export * from './lib/components/container/container.component';
 export * from './lib/components/table/table.component';
+export * from './lib/components/paginator/paginator.component';

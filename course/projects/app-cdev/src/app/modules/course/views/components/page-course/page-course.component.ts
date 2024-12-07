@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 
-import { ContainerComponent, TableComponent, TitleComponent } from '../../../../../../../../app-cdev-lib/src/public-api';
+import {
+  ContainerComponent,
+  TableComponent,
+  TitleComponent,
+} from '../../../../../../../../app-cdev-lib/src/public-api';
 import { TMetadata } from '../../../../core/types/metadata';
 import { BaseComponent } from '../../../../core/views/base.component';
 
@@ -14,6 +18,7 @@ import { BaseComponent } from '../../../../core/views/base.component';
 export class PageCourseComponent extends BaseComponent {
   title = 'Course';
   icon = 'settings';
+  length = 0;
 
   metadata: TMetadata = [
     { field: 'id', title: 'ID' },
@@ -21,7 +26,7 @@ export class PageCourseComponent extends BaseComponent {
     { field: 'email', title: 'Email' },
     { field: 'website', title: 'Website' },
   ];
-  
+
   data = [
     {
       id: 1,

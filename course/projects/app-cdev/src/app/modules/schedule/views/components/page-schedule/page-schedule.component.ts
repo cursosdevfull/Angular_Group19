@@ -18,6 +18,7 @@ import { BaseComponent } from '../../../../core/views/base.component';
 export class PageScheduleComponent extends BaseComponent {
   title = 'Schedule';
   icon = 'schedule';
+  length = 0;
 
   metadata: TMetadata = [
     { field: 'id', title: 'ID' },

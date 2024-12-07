@@ -26,6 +26,7 @@ import { BaseComponent } from '../../../../core/views/base.component';
 export class PageTeacherComponent extends BaseComponent {
   title = 'Teachers';
   icon = 'school';
+  length = 0;
 
   metadata: TMetadata = [
     { field: 'id', title: 'ID' },

@@ -13,4 +13,11 @@
       </td>
     </ng-container>
   </cdevlib-table>
+  <div class="options">
+    <cdevlib-paginator
+      [length]="length"
+      [pageSize]="pageSize"
+      (changePage)="onPage($event)"
+    ></cdevlib-paginator>
+  </div>
 </cdevlib-container>
