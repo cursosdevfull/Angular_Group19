@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 
 import {
   ContainerComponent,
+  ExportOptionsComponent,
+  PaginatorComponent,
   TableComponent,
   TitleComponent,
 } from '../../../../../../../../app-cdev-lib/src/public-api';
@@ -11,14 +13,22 @@ import { BaseComponent } from '../../../../core/views/base.component';
 @Component({
   selector: 'cdev-page-schedule',
   standalone: true,
-  imports: [TitleComponent, ContainerComponent, TableComponent],
+  imports: [
+    TitleComponent,
+    ContainerComponent,
+    TableComponent,
+    PaginatorComponent,
+    ExportOptionsComponent,
+  ],
   templateUrl: './page-schedule.component.html',
   styleUrl: './page-schedule.component.css',
 })
 export class PageScheduleComponent extends BaseComponent {
   title = 'Schedule';
   icon = 'schedule';
-  length = 0;
+
+  filename = 'schedules';
+  subject = "Schedule's data";
 
   metadata: TMetadata = [
     { field: 'id', title: 'ID' },
@@ -27,7 +37,7 @@ export class PageScheduleComponent extends BaseComponent {
     { field: 'website', title: 'Website' },
   ];
 
-  data = [
+  override dataOriginal = [
     {
       id: 1,
       name: 'Leanne Graham',
@@ -71,4 +81,10 @@ export class PageScheduleComponent extends BaseComponent {
       website: 'ramiro.info',
     },
   ];
+
+  constructor() {
+    super();
+    this.length = this.dataOriginal.length;
+    this.loadPage(0);
+  }
 }

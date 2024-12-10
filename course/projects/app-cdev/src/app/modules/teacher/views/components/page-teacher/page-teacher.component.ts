@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 
 import {
   ContainerComponent,
+  ExportOptionsComponent,
+  PaginatorComponent,
   TableComponent,
   TitleComponent,
 } from '../../../../../../../../app-cdev-lib/src/public-api';
@@ -19,6 +21,8 @@ import { BaseComponent } from '../../../../core/views/base.component';
     TitleComponent,
     ContainerComponent,
     TableComponent,
+    PaginatorComponent,
+    ExportOptionsComponent,
   ],
   templateUrl: './page-teacher.component.html',
   styleUrls: ['./page-teacher.component.css'],
@@ -26,7 +30,9 @@ import { BaseComponent } from '../../../../core/views/base.component';
 export class PageTeacherComponent extends BaseComponent {
   title = 'Teachers';
   icon = 'school';
-  length = 0;
+
+  filename = 'teachers';
+  subject = "Teacher's data";
 
   metadata: TMetadata = [
     { field: 'id', title: 'ID' },
@@ -35,7 +41,7 @@ export class PageTeacherComponent extends BaseComponent {
     { field: 'subject', title: 'Subject' },
   ];
 
-  data = [
+  override dataOriginal = [
     {
       id: 1,
       name: 'John Doe',
@@ -50,4 +56,10 @@ export class PageTeacherComponent extends BaseComponent {
     },
     // Agrega más datos de teachers aquí
   ];
+
+  constructor() {
+    super();
+    this.length = this.dataOriginal.length;
+    this.loadPage(0);
+  }
 }

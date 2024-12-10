@@ -5,6 +5,7 @@ import { MatTableModule } from '@angular/material/table';
 
 import {
   ContainerComponent,
+  ExportOptionsComponent,
   PaginatorComponent,
   TableComponent,
   TitleComponent,
@@ -23,6 +24,7 @@ import { BaseComponent } from '../../../../core/views/base.component';
     MatTableModule,
     MatButtonModule,
     PaginatorComponent,
+    ExportOptionsComponent,
   ],
   templateUrl: './page-user.component.html',
   styleUrl: './page-user.component.css',
@@ -30,7 +32,8 @@ import { BaseComponent } from '../../../../core/views/base.component';
 export class PageUserComponent extends BaseComponent {
   title = 'User';
   icon = 'people';
-  length = 0;
+  filename = 'users';
+  subject = "User's data";
 
   metadata: TMetadata = [
     { field: 'id', title: 'ID' },
@@ -39,7 +42,7 @@ export class PageUserComponent extends BaseComponent {
     { field: 'website', title: 'Website' },
   ];
 
-  dataOriginal = [
+  override dataOriginal = [
     {
       id: 1,
       name: 'Leanne Graham',
@@ -428,23 +431,9 @@ export class PageUserComponent extends BaseComponent {
     },
   ];
 
-  data: any[] = [];
-
   constructor() {
     super();
     this.length = this.dataOriginal.length;
     this.loadPage(0);
-  }
-
-  loadPage(page: number) {
-    this.currentPage = page;
-    this.data = this.dataOriginal.slice(
-      page * this.pageSize,
-      (page + 1) * this.pageSize
-    );
-  }
-
-  onPage(page: number) {
-    this.loadPage(page);
   }
 }

@@ -1,3 +1,5 @@
+import { IMAGE_CONFIG } from '@angular/common';
+import { provideHttpClient } from '@angular/common/http';
 import {
   ApplicationConfig,
   importProvidersFrom,
@@ -19,9 +21,17 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideAnimationsAsync(),
+    provideHttpClient(),
     importProvidersFrom(LayoutModule.forRoot(LAYOUT_CONFIG)),
     provideLottieOptions({
       player: () => player,
     }),
+    {
+      provide: IMAGE_CONFIG,
+      useValue: {
+        disableImageSizeWarning: true,
+        disableImageLazyLoadWarning: true,
+      },
+    },
   ],
 };

@@ -1,8 +1,9 @@
-import { Component, effect } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterOutlet } from '@angular/router';
 
 import { LayoutService } from '../../../app-cdev-lib/src/public-api';
+import { IconService } from './modules/core/services/icon.service';
 import { HeaderComponent } from './modules/core/views/components/header/header.component';
 import { MenuComponent } from './modules/core/views/components/menu/menu.component';
 
@@ -21,6 +22,8 @@ export class AppComponent {
 
   showMenu = true;
   showHeader = true;
+
+  iconService = inject(IconService);
 
   constructor(private readonly layoutService: LayoutService) {
     effect(() => {

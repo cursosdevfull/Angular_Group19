@@ -11,3 +11,10 @@ body {
 * {
   box-sizing: border-box;
 }
+
+.options-export-paginator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(253, 251, 255);
+}

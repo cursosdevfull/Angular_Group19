@@ -1,10 +1,11 @@
-import { Component, input, output } from '@angular/core';
+import { Component, Injectable, input, output } from '@angular/core';
 import {
   MatPaginatorIntl,
   MatPaginatorModule,
   PageEvent,
 } from '@angular/material/paginator';
 
+@Injectable()
 class CustomPaginatorIntl extends MatPaginatorIntl {
   override itemsPerPageLabel = 'Items por página:';
   override nextPageLabel = 'Siguiente página';

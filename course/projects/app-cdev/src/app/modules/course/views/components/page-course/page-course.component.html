@@ -1,4 +1,14 @@
 <cdevlib-title [title]="title" [icon]="icon"></cdevlib-title>
 <cdevlib-container>
   <cdevlib-table [data]="data" [metadata]="metadata"></cdevlib-table>
+  <div class="options-export-paginator">
+    <cdevlib-export-options
+      (onCallToData)="exportData()"
+    ></cdevlib-export-options>
+    <cdevlib-paginator
+      [length]="length"
+      [pageSize]="pageSize"
+      (changePage)="onPage($event)"
+    ></cdevlib-paginator>
+  </div>
 </cdevlib-container>
