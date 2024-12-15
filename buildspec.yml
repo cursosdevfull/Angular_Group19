@@ -22,4 +22,4 @@ artifacts:
   name: "Angular19"
   files:
     - "**/*"
-  base-directory: "dist/app-cdev/browser"
+  base-directory: "course/dist/app-cdev/browser"
