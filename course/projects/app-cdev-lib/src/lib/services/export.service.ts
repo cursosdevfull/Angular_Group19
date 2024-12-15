@@ -7,7 +7,7 @@ import { Info } from './info.type';
 
 type SubOptionsToExportPDF = 0 | 1 | 2;
 
-pdfMake.vfs = pdfFonts.vfs;
+pdfMake.vfs = (pdfFonts as any).pdfMake.vfs;
 
 @Injectable({ providedIn: 'root' })
 export class ExportService {
@@ -40,20 +40,27 @@ export class ExportService {
     });
   }
 
-  private generateHeaders(title: string, image?: string) {
+  private generateHeaders(title: string, imageLogo?: string) {
     return {
-      margin: [0, 0, 0, 15],
+      margin: [0, 0, 0, 20],
       table: {
         widths: [120, 'auto', 100, 'auto'],
         body: [
           [
             {
-              image: image,
+              image: imageLogo,
               width: 100,
               border: [false, false, true, false],
               borderColor: ['#000', '#000', '#000', '#000'],
               borderWidth: 1,
             },
+            /*             {
+              image: image,
+              width: 100,
+              border: [false, false, true, false],
+              borderColor: ['#000', '#000', '#000', '#000'],
+              borderWidth: 1,
+            }, */
             {
               text: [
                 this.generateRow('CursosDev', 'headerLeft'),
@@ -111,6 +118,36 @@ export class ExportService {
     }
   }
 
+  private generateStyles() {
+    return {
+      headerLeft: {
+        fontFamily: 'Verdana',
+        fontSize: 13,
+        height: 16,
+        color: '#3c3b40',
+      },
+      subHeaderLeft: {
+        fontFamily: 'Verdana',
+        fontSize: 10,
+        height: 16,
+        color: '#3c3b40',
+      },
+      titleReport: {
+        fontFamily: 'Verdana',
+        fontSize: 15,
+        height: 16,
+        color: '#3c3b40',
+      },
+      header: {
+        fontFamily: 'Verdana',
+        fontSize: 13,
+        height: 14,
+        color: '#3c3b40',
+        bold: true,
+      },
+    };
+  }
+
   exportToExcel(info: Info) {
     const dataToExport = this.fromDataToExport(info.records, info.metadata);
     const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(dataToExport);
@@ -131,6 +168,7 @@ export class ExportService {
       pageOrientation: 'portrait',
       pageMargins: [20, 20, 20, 20],
       content: [this.generateHeaders(info.subject, imageLogo)],
+      styles: this.generateStyles(),
     };
 
     this.generatePDF(infoFormatted, info.filename, subOption);
