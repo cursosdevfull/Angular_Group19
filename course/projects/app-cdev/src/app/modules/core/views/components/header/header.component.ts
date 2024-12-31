@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router } from '@angular/router';
+import { jwtDecode } from 'jwt-decode';
 
 const modules = [
   MatToolbarModule,
@@ -22,9 +23,19 @@ const modules = [
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  private router = inject(Router);
+  private readonly router = inject(Router);
+  name!: string;
+  lastname!: string;
+
+  ngOnInit() {
+    const token = sessionStorage.getItem('accessToken') as string;
+    const payload: any = jwtDecode(token);
+    this.name = payload.name;
+    this.lastname = payload.lastname;
+  }
 
   logout() {
-    this.router.navigate(['/login']);
+    sessionStorage.clear();
+    this.router.navigate(['/auth']);
   }
 }

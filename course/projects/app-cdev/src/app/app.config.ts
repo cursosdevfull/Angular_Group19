@@ -1,5 +1,9 @@
 import { IMAGE_CONFIG } from '@angular/common';
-import { provideHttpClient } from '@angular/common/http';
+import {
+  provideHttpClient,
+  withFetch,
+  withInterceptors,
+} from '@angular/common/http';
 import {
   ApplicationConfig,
   importProvidersFrom,
@@ -15,13 +19,14 @@ import {
   LayoutModule,
 } from '../../../app-cdev-lib/src/public-api';
 import { routes } from './app.routes';
+import { headerInterceptor } from './modules/core/interceptors/header.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideAnimationsAsync(),
-    provideHttpClient(),
+    provideHttpClient(withFetch(), withInterceptors([headerInterceptor])),
     importProvidersFrom(LayoutModule.forRoot(LAYOUT_CONFIG)),
     provideLottieOptions({
       player: () => player,

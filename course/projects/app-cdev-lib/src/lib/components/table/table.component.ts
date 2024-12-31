@@ -3,6 +3,7 @@ import {
   contentChildren,
   effect,
   input,
+  output,
   viewChild,
 } from '@angular/core';
 import {
@@ -41,6 +42,7 @@ export class TableComponent {
 
   metadata = input.required<TMetadata>();
   data = input.required<any[]>();
+  edit = output<any>();
 
   displayedColumns: string[] = [];
 
@@ -64,5 +66,9 @@ export class TableComponent {
         });
       }
     });
+  }
+
+  onEdit(row: any) {
+    this.edit.emit(row);
   }
 }

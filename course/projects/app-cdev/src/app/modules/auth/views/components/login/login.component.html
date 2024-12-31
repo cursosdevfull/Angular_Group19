@@ -1,6 +1,6 @@
 <div class="container">
   <form [formGroup]="formGroup">
-    <h1>Credentials</h1>
+    <h1>Login</h1>
 
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
@@ -21,12 +21,21 @@
       }}</mat-icon>
     </mat-form-field>
 
+    <div class="recaptcha">
+      <re-captcha formControlName="recaptchaCode"></re-captcha>
+    </div>
+
     <div class="linkRegister">
-      Don't have an account? <a routerLink="/register">click here</a>
+      Don't have an account? <a routerLink="/auth/register">click here</a>
     </div>
 
     <div class="buttonActions">
-      <button mat-flat-button (click)="login()" [disabled]="formGroup.invalid">
+      <button
+        mat-flat-button
+        (click)="login()"
+        [disabled]="formGroup.invalid"
+        type="button"
+      >
         LOGIN
       </button>
     </div>

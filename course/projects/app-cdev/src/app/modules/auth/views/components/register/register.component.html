@@ -1,0 +1,67 @@
+<div class="container">
+  <form [formGroup]="formGroup">
+    <h1>Register</h1>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input type="text" matInput required formControlName="name" />
+      <mat-icon matSuffix>face</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Lastname</mat-label>
+      <input type="text" matInput required formControlName="lastname" />
+      <mat-icon matSuffix>face</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput required formControlName="email" />
+      <mat-icon matSuffix>email</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input
+        [type]="visibilityPassword"
+        matInput
+        required
+        formControlName="password"
+      />
+      <mat-icon matSuffix (click)="changeVisibility()" class="iconPassword">{{
+        visibilityPassword === "password" ? "visibility" : "visibility_off"
+      }}</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Confirm password</mat-label>
+      <input
+        [type]="visibilityPassword"
+        matInput
+        required
+        formControlName="confirm"
+      />
+      <mat-icon matSuffix (click)="changeVisibility()" class="iconPassword">{{
+        visibilityPassword === "password" ? "visibility" : "visibility_off"
+      }}</mat-icon>
+    </mat-form-field>
+    @if(formGroup.hasError("notMatch")) {
+    <p class="error">Password and its confirm not match</p>
+    }
+
+    <div class="linkRegister">
+      Have an account? <a routerLink="/auth">click here</a>
+    </div>
+
+    <div class="buttonActions">
+      <button
+        mat-flat-button
+        (click)="register()"
+        [disabled]="formGroup.invalid"
+        type="button"
+      >
+        REGISTER
+      </button>
+    </div>
+  </form>
+</div>

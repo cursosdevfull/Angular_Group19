@@ -17,6 +17,7 @@
       mat-row
       *matRowDef="let row; columns: displayedColumns"
       class="row-hover"
+      (click)="onEdit(row)"
     ></tr>
   </table>
 </perfect-scrollbar>

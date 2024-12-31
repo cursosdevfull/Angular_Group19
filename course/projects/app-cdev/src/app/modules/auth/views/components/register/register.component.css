@@ -1,0 +1,52 @@
+:host {
+  background-color: whitesmoke;
+  width: 400px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.container {
+  padding: 40px;
+}
+
+.iconPassword {
+  cursor: pointer;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+}
+
+.buttonActions {
+  display: flex;
+  flex-direction: column;
+}
+
+.linkRegister {
+  padding: 20px 0;
+  text-align: center;
+}
+
+.linkRegister a,
+.linkRegister a:visited,
+.linkRegister a:active,
+.linkRegister a:link {
+  color: #2173df;
+  text-decoration: none;
+}
+
+.linkRegister a:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+p.error {
+  color: red;
+  font-size: 12px;
+  text-align: center;
+}

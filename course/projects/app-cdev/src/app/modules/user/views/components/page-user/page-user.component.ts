@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
@@ -12,6 +12,7 @@ import {
 } from '../../../../../../../../app-cdev-lib/src/public-api';
 import { TMetadata } from '../../../../core/types/metadata';
 import { BaseComponent } from '../../../../core/views/base.component';
+import { UserApplication } from '../../../application/user.application';
 
 @Component({
   selector: 'cdev-page-user',
@@ -35,405 +36,37 @@ export class PageUserComponent extends BaseComponent {
   filename = 'users';
   subject = "User's data";
 
+  application = inject(UserApplication);
+
   metadata: TMetadata = [
-    { field: 'id', title: 'ID' },
+    { field: 'userId', title: 'ID' },
     { field: 'name', title: 'Name' },
+    { field: 'lastname', title: 'Lastname' },
     { field: 'email', title: 'Email' },
-    { field: 'website', title: 'Website' },
-  ];
-
-  override dataOriginal = [
-    {
-      id: 1,
-      name: 'Leanne Graham',
-      email: 'leanne.graha@email.com',
-      phone: '1-770-736-8031 x56442',
-      website: 'hildegard.org',
-    },
-    {
-      id: 2,
-      name: 'Ervin Howell',
-      email: 'ervin.howell@email.com',
-      phone: '010-692-6593 x09125',
-      website: 'anastasia.net',
-    },
-    {
-      id: 3,
-      name: 'Clementine Bauch',
-      email: 'clementine.bauch@email.com',
-      phone: '1-463-123-4447',
-      website: 'ramiro.info',
-    },
-    {
-      id: 4,
-      name: 'Leanne Graham',
-      email: 'leanne.graha@email.com',
-      phone: '1-770-736-8031 x56442',
-      website: 'hildegard.org',
-    },
-    {
-      id: 5,
-      name: 'Ervin Howell',
-      email: 'ervin.howell@email.com',
-      phone: '010-692-6593 x09125',
-      website: 'anastasia.net',
-    },
-    {
-      id: 6,
-      name: 'Clementine Bauch',
-      email: 'clementine.bauch@email.com',
-      phone: '1-463-123-4447',
-      website: 'ramiro.info',
-    },
-
-    {
-      id: 1,
-      name: 'Leanne Graham',
-      email: 'leanne.graha@email.com',
-      phone: '1-770-736-8031 x56442',
-      website: 'hildegard.org',
-    },
-    {
-      id: 2,
-      name: 'Ervin Howell',
-      email: 'ervin.howell@email.com',
-      phone: '010-692-6593 x09125',
-      website: 'anastasia.net',
-    },
-    {
-      id: 3,
-      name: 'Clementine Bauch',
-      email: 'clementine.bauch@email.com',
-      phone: '1-463-123-4447',
-      website: 'ramiro.info',
-    },
-    {
-      id: 4,
-      name: 'Leanne Graham',
-      email: 'leanne.graha@email.com',
-      phone: '1-770-736-8031 x56442',
-      website: 'hildegard.org',
-    },
-    {
-      id: 5,
-      name: 'Ervin Howell',
-      email: 'ervin.howell@email.com',
-      phone: '010-692-6593 x09125',
-      website: 'anastasia.net',
-    },
-    {
-      id: 6,
-      name: 'Clementine Bauch',
-      email: 'clementine.bauch@email.com',
-      phone: '1-463-123-4447',
-      website: 'ramiro.info',
-    },
-
-    {
-      id: 1,
-      name: 'Leanne Graham',
-      email: 'leanne.graha@email.com',
-      phone: '1-770-736-8031 x56442',
-      website: 'hildegard.org',
-    },
-    {
-      id: 2,
-      name: 'Ervin Howell',
-      email: 'ervin.howell@email.com',
-      phone: '010-692-6593 x09125',
-      website: 'anastasia.net',
-    },
-    {
-      id: 3,
-      name: 'Clementine Bauch',
-      email: 'clementine.bauch@email.com',
-      phone: '1-463-123-4447',
-      website: 'ramiro.info',
-    },
-    {
-      id: 4,
-      name: 'Leanne Graham',
-      email: 'leanne.graha@email.com',
-      phone: '1-770-736-8031 x56442',
-      website: 'hildegard.org',
-    },
-    {
-      id: 5,
-      name: 'Ervin Howell',
-      email: 'ervin.howell@email.com',
-      phone: '010-692-6593 x09125',
-      website: 'anastasia.net',
-    },
-    {
-      id: 6,
-      name: 'Clementine Bauch',
-      email: 'clementine.bauch@email.com',
-      phone: '1-463-123-4447',
-      website: 'ramiro.info',
-    },
-
-    {
-      id: 1,
-      name: 'Leanne Graham',
-      email: 'leanne.graha@email.com',
-      phone: '1-770-736-8031 x56442',
-      website: 'hildegard.org',
-    },
-    {
-      id: 2,
-      name: 'Ervin Howell',
-      email: 'ervin.howell@email.com',
-      phone: '010-692-6593 x09125',
-      website: 'anastasia.net',
-    },
-    {
-      id: 3,
-      name: 'Clementine Bauch',
-      email: 'clementine.bauch@email.com',
-      phone: '1-463-123-4447',
-      website: 'ramiro.info',
-    },
-    {
-      id: 4,
-      name: 'Leanne Graham',
-      email: 'leanne.graha@email.com',
-      phone: '1-770-736-8031 x56442',
-      website: 'hildegard.org',
-    },
-    {
-      id: 5,
-      name: 'Ervin Howell',
-      email: 'ervin.howell@email.com',
-      phone: '010-692-6593 x09125',
-      website: 'anastasia.net',
-    },
-    {
-      id: 6,
-      name: 'Clementine Bauch',
-      email: 'clementine.bauch@email.com',
-      phone: '1-463-123-4447',
-      website: 'ramiro.info',
-    },
-
-    {
-      id: 1,
-      name: 'Leanne Graham',
-      email: 'leanne.graha@email.com',
-      phone: '1-770-736-8031 x56442',
-      website: 'hildegard.org',
-    },
-    {
-      id: 2,
-      name: 'Ervin Howell',
-      email: 'ervin.howell@email.com',
-      phone: '010-692-6593 x09125',
-      website: 'anastasia.net',
-    },
-    {
-      id: 3,
-      name: 'Clementine Bauch',
-      email: 'clementine.bauch@email.com',
-      phone: '1-463-123-4447',
-      website: 'ramiro.info',
-    },
-    {
-      id: 4,
-      name: 'Leanne Graham',
-      email: 'leanne.graha@email.com',
-      phone: '1-770-736-8031 x56442',
-      website: 'hildegard.org',
-    },
-    {
-      id: 5,
-      name: 'Ervin Howell',
-      email: 'ervin.howell@email.com',
-      phone: '010-692-6593 x09125',
-      website: 'anastasia.net',
-    },
-    {
-      id: 6,
-      name: 'Clementine Bauch',
-      email: 'clementine.bauch@email.com',
-      phone: '1-463-123-4447',
-      website: 'ramiro.info',
-    },
-
-    {
-      id: 1,
-      name: 'Leanne Graham',
-      email: 'leanne.graha@email.com',
-      phone: '1-770-736-8031 x56442',
-      website: 'hildegard.org',
-    },
-    {
-      id: 2,
-      name: 'Ervin Howell',
-      email: 'ervin.howell@email.com',
-      phone: '010-692-6593 x09125',
-      website: 'anastasia.net',
-    },
-    {
-      id: 3,
-      name: 'Clementine Bauch',
-      email: 'clementine.bauch@email.com',
-      phone: '1-463-123-4447',
-      website: 'ramiro.info',
-    },
-    {
-      id: 4,
-      name: 'Leanne Graham',
-      email: 'leanne.graha@email.com',
-      phone: '1-770-736-8031 x56442',
-      website: 'hildegard.org',
-    },
-    {
-      id: 5,
-      name: 'Ervin Howell',
-      email: 'ervin.howell@email.com',
-      phone: '010-692-6593 x09125',
-      website: 'anastasia.net',
-    },
-    {
-      id: 6,
-      name: 'Clementine Bauch',
-      email: 'clementine.bauch@email.com',
-      phone: '1-463-123-4447',
-      website: 'ramiro.info',
-    },
-
-    {
-      id: 1,
-      name: 'Leanne Graham',
-      email: 'leanne.graha@email.com',
-      phone: '1-770-736-8031 x56442',
-      website: 'hildegard.org',
-    },
-    {
-      id: 2,
-      name: 'Ervin Howell',
-      email: 'ervin.howell@email.com',
-      phone: '010-692-6593 x09125',
-      website: 'anastasia.net',
-    },
-    {
-      id: 3,
-      name: 'Clementine Bauch',
-      email: 'clementine.bauch@email.com',
-      phone: '1-463-123-4447',
-      website: 'ramiro.info',
-    },
-    {
-      id: 4,
-      name: 'Leanne Graham',
-      email: 'leanne.graha@email.com',
-      phone: '1-770-736-8031 x56442',
-      website: 'hildegard.org',
-    },
-    {
-      id: 5,
-      name: 'Ervin Howell',
-      email: 'ervin.howell@email.com',
-      phone: '010-692-6593 x09125',
-      website: 'anastasia.net',
-    },
-    {
-      id: 6,
-      name: 'Clementine Bauch',
-      email: 'clementine.bauch@email.com',
-      phone: '1-463-123-4447',
-      website: 'ramiro.info',
-    },
-
-    {
-      id: 1,
-      name: 'Leanne Graham',
-      email: 'leanne.graha@email.com',
-      phone: '1-770-736-8031 x56442',
-      website: 'hildegard.org',
-    },
-    {
-      id: 2,
-      name: 'Ervin Howell',
-      email: 'ervin.howell@email.com',
-      phone: '010-692-6593 x09125',
-      website: 'anastasia.net',
-    },
-    {
-      id: 3,
-      name: 'Clementine Bauch',
-      email: 'clementine.bauch@email.com',
-      phone: '1-463-123-4447',
-      website: 'ramiro.info',
-    },
-    {
-      id: 4,
-      name: 'Leanne Graham',
-      email: 'leanne.graha@email.com',
-      phone: '1-770-736-8031 x56442',
-      website: 'hildegard.org',
-    },
-    {
-      id: 5,
-      name: 'Ervin Howell',
-      email: 'ervin.howell@email.com',
-      phone: '010-692-6593 x09125',
-      website: 'anastasia.net',
-    },
-    {
-      id: 6,
-      name: 'Clementine Bauch',
-      email: 'clementine.bauch@email.com',
-      phone: '1-463-123-4447',
-      website: 'ramiro.info',
-    },
-
-    {
-      id: 1,
-      name: 'Leanne Graham',
-      email: 'leanne.graha@email.com',
-      phone: '1-770-736-8031 x56442',
-      website: 'hildegard.org',
-    },
-    {
-      id: 2,
-      name: 'Ervin Howell',
-      email: 'ervin.howell@email.com',
-      phone: '010-692-6593 x09125',
-      website: 'anastasia.net',
-    },
-    {
-      id: 3,
-      name: 'Clementine Bauch',
-      email: 'clementine.bauch@email.com',
-      phone: '1-463-123-4447',
-      website: 'ramiro.info',
-    },
-    {
-      id: 4,
-      name: 'Leanne Graham',
-      email: 'leanne.graha@email.com',
-      phone: '1-770-736-8031 x56442',
-      website: 'hildegard.org',
-    },
-    {
-      id: 5,
-      name: 'Ervin Howell',
-      email: 'ervin.howell@email.com',
-      phone: '010-692-6593 x09125',
-      website: 'anastasia.net',
-    },
-    {
-      id: 6,
-      name: 'Clementine Bauch',
-      email: 'clementine.bauch@email.com',
-      phone: '1-463-123-4447',
-      website: 'ramiro.info',
-    },
   ];
 
   constructor() {
     super();
-    this.length = this.dataOriginal.length;
     this.loadPage(0);
+
+    effect(() => {
+      const result = this.application.userByPage();
+      this.data = result.data;
+      this.length = result.total;
+    });
+
+    effect(() => {
+      const result = this.application.users();
+      if (result.length > 0) this.executeExport(result);
+    });
+  }
+
+  override loadPage(page: number) {
+    this.currentPage = page;
+    this.application.getByPage(page + 1, this.pageSize);
+  }
+
+  override exportData() {
+    this.application.getAll();
   }
 }

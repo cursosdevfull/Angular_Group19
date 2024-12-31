@@ -1,0 +1,28 @@
+<div class="container">
+  <form [formGroup]="formGroup">
+    <h1>Activate 2FA</h1>
+
+    <img [src]="qrCode" alt="QR Code" />
+
+    <mat-form-field appearance="outline">
+      <mat-label>Token</mat-label>
+      <input type="text" matInput required formControlName="token" />
+      <mat-icon matSuffix>email</mat-icon>
+    </mat-form-field>
+
+    <div class="linkRegister">
+      Don't have an account? <a routerLink="/auth/register">click here</a>
+    </div>
+
+    <div class="buttonActions">
+      <button
+        mat-flat-button
+        (click)="activate2FA()"
+        [disabled]="formGroup.invalid"
+        type="button"
+      >
+        ACTIVATE
+      </button>
+    </div>
+  </form>
+</div>

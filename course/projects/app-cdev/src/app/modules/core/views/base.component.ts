@@ -52,4 +52,15 @@ export abstract class BaseComponent {
       },
     });
   }
+
+  executeExport(data: any[]) {
+    this.bottonSheet.open(OptionsComponent, {
+      data: {
+        records: data,
+        metadata: this.metadata,
+        filename: this.filename,
+        subject: this.subject,
+      },
+    });
+  }
 }

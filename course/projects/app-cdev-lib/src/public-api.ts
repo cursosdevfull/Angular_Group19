@@ -19,3 +19,4 @@ export * from './lib/components/export-options/export-options.component';
 export * from './lib/components/export-options/options/options.component';
 export * from './lib/services/export.service';
 export * from './lib/services/info.type';
+export * from './lib/components/confirm/confirm.component';
